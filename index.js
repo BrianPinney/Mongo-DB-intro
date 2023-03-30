@@ -3,10 +3,7 @@ import { client } from "./mongoConnect.js";
 //connect to the client
 
 // connect to db -  or create if there is one
-const database = client.db("products");
 
-// connect to collection - or create one
-const collection = database.collection("fruits");
 
 const addFruit = async () => {
   const myFruit = {
@@ -22,15 +19,7 @@ const addFruit = async () => {
 
 // addFruit();
 
-const editFruit = async () => {
-  const updatedFruit = await collection.findOneAndUpdate(
-    { name: "Pineapple" },
-    { $set: { name: "Watermelon", special: true } }
-  );
-  console.log(updatedFruit);
-};
 
-// editFruit();
 
 const getAllFruits = async () => {
   try {
@@ -62,4 +51,4 @@ const deleteFruit = async () => {
   }
 };
 
-deleteFruit()
+// deleteFruit()
