@@ -35,7 +35,7 @@ const editFruit = async () => {
 const getAllFruits = async () => {
   try {
     await client.connect();
-    const allFruits = await collection.find().toArray()
+    const allFruits = await collection.find().toArray();
     console.log(allFruits);
   } catch (error) {
     console.log(error);
@@ -48,11 +48,18 @@ const getAllFruits = async () => {
 //     .toArray()
 //     .then((items) => console.log(items))
 //     .catch(err => console.log(err));
-getAllFruits();
+// getAllFruits();
 
 const deleteFruit = async () => {
-  const itemDeleted = await collection.deleteOne({ name: "Watermelon" });
-  console.log(itemDeleted);
+  try {
+    await client.connect();
+    const itemDeleted = await collection.deleteOne({ name: "apple" });
+    console.log(itemDeleted);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    client.close();
+  }
 };
 
-// deleteFruit()
+deleteFruit()
