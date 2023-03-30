@@ -1,20 +1,27 @@
-import { client, toysCollection } from "../mongoConnect";
+import { client, toysCollection } from "../mongoConnect.js"
 
-client.connect()
+
 
 const addToy = async () => {
 
 
     const myToy = {
-        name: 'Optimus Prime',
-        type: 'Transformer',
+        name: 'Scooter',
+        type: 'mobile',
         cool: true,
-        price: 40,
-        description: 'Leader Autobot, real cool Red semi truck, with sword',
+        price: 120,
+        description: 'motorized 2 wheel scooter with collapsible handles',
+    } 
+    try {
+        await client.connect()
+        const addedToy = await toysCollection.insertOne(myToy)
+        console.log(addedToy)
+    } catch (error) {
+        console.log(error)
+    } finally {
+        await client.close()
     }
 
-    const addedToy = await toysCollection.insertOne(myToy)
-    console.log(addedToy)
 }
 
 addToy()

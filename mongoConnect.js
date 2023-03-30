@@ -1,12 +1,12 @@
-import dotenv from "dotenv"
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 const MONGOURI = process.env.MONGOURI
 
-import { MongoClient } from "mongodb"
+import { MongoClient } from 'mongodb'
 
 export const client = new MongoClient(MONGOURI)
-const database = client.db("products")
+const database = client.db('products')
 
-export const fruitsCollection = database.collection("fruits")
-export const toysCollection = database.collection("toys")
+export const fruitsCollection = database.collection('fruits')
+export const toysCollection = database.collection('toys')
